@@ -1,0 +1,14 @@
+{
+  "CN": "system:node:node-01",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [{
+    "C": "CA",
+    "L": "Fredericton",
+    "O": "system:nodes",
+    "OU": "dokthw",
+    "ST": "NB"
+  }]
+}

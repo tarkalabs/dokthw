@@ -1,0 +1,17 @@
+Host controller-01
+Hostname $CONTROLLERIP
+StrictHostKeyChecking no
+UserKnownHostsFile=/dev/null
+User root
+
+Host node-01 
+Hostname $NODE01IP
+StrictHostKeyChecking no
+UserKnownHostsFile=/dev/null
+User root
+
+Host node-02 
+Hostname $NODE02IP
+StrictHostKeyChecking no
+UserKnownHostsFile=/dev/null
+User root
