@@ -8,3 +8,4 @@ systemctl start kube-apiserver kube-controller-manager kube-scheduler
 systemctl reload nginx
 
 kubectl get componentstatuses --kubeconfig /var/lib/kubernetes/admin.kubeconfig
+kubectl apply -f node_authorization.yaml
