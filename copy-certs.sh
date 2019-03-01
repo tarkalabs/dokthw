@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
-function smartscp() {
-  scp -F =(envsubst < ssh_config) $*
-}
+
+source ./utils.sh
 
 smartscp certs/ca.pem \
   certs/ca-key.pem \
@@ -11,12 +10,14 @@ smartscp certs/ca.pem \
   certs/service-account.pem  \
   controller-01:.
 
-smartscp certs/ca.pem \
-  certs/node-01.pem  \
-  certs/node-01-key.pem  \
-  node-01:.
+for instance in node-01 node-02; do
+  smartscp certs/ca.pem \
+    certs/${instance}.pem  \
+    certs/${instance}-key.pem  \
+    ${instance}:.
+done
 
-smartscp certs/ca.pem \
-  certs/node-02.pem  \
-  certs/node-02-key.pem  \
-  node-02:.
+for instance in node-01 node-02 controller-01; do
+  smartscp =(envsubst < hosts) ${instance}:~/hosts
+  smartssh ${instance} "cat hosts >> /etc/hosts"
+done
