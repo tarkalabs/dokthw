@@ -1,6 +1,5 @@
 # this file runs on the server
 
-hostname -s
 mkdir -p $HOME/components
 COMPONENTDIR=$HOME/components
 #rm -rf $COMPONENTDIR/etcd-download-test
