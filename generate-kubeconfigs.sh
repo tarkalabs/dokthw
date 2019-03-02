@@ -11,7 +11,7 @@ function set_cluster_with_addr() {
 
 # usage: set_cluster config_name 
 function set_cluster() {
-  set_cluster_with_addr https//${CLUSTERADDR}/ ${1}
+  set_cluster_with_addr https://${CLUSTERADDR}/ ${1}
 }
 
 # usage: set_user username keyname config_name
@@ -61,8 +61,14 @@ function admin_certs() {
   set_user admin
 }
 
+function dev_access() {
+  set_cluster dev
+  set_user_custom admin admin dev
+}
+
 node_certs
 proxy_certs
 controller_manager_certs
 scheduler_certs
 admin_certs
+dev_access

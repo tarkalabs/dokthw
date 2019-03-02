@@ -8,3 +8,5 @@ smartscp control_plane/kube-scheduler.service controller-01:/etc/systemd/system/
 smartscp control_plane/node_authorization.yaml controller-01:node_authorization.yaml
 smartscp =(envsubst < control_plane/health_check.conf) controller-01:/etc/nginx/sites-available/health_check.conf
 run_remote controller-01 control_plane/start-services.sh
+
+curl --cacert certs/ca.pem https://$CLUSTERADDR/version
