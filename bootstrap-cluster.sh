@@ -5,23 +5,24 @@ if [[ -z "${NODE01IP}" ]] || [[ -z "${NODE02IP}" ]] || [[ -z "${CONTROLLERIP}" ]
 fi
 
 echo "hang on..."
-source ./utils.sh >> bootstrap.log
+./utils.sh >> bootstrap.log 2>&1
 echo "generating certs..."
-source ./generate-certs.sh >> boostrap.log
+./generate-certs.sh >> bootstrap.log 2>&1
 echo "copying certs to cluster..."
-source ./copy-certs.sh >> bootstrap.log
+./copy-certs.sh >> bootstrap.log 2>&1
 echo "generating kubeconfig files ..."
-source ./generate-kubeconfigs.sh >> boostrap.log
+./generate-kubeconfigs.sh >> bootstrap.log 2>&1
 echo "copying kubeconfig files to cluster ..."
-source ./copy-configs.sh >> bootstrap.log
+./copy-configs.sh >> bootstrap.log 2>&1
 echo "setting up etcd ..."
-source ./setup-etcd.sh >> bootstrap.log
+./setup-etcd.sh >> bootstrap.log 2>&1
+sleep 5
 echo "setting up control plane ..."
-source ./setup-control-plane.sh >> bootstrap.log
+./setup-control-plane.sh >> bootstrap.log 2>&1
 echo "setting up worker nodes ..."
-source ./setup-nodes.sh >> bootstrap.log
+./setup-nodes.sh >> bootstrap.log 2>&1
 echo "setting up networking ..."
-source ./setup-networking.sh >> bootstrap.log
+./setup-networking.sh >> bootstrap.log 2>&1
 
 echo "all set for take off"
 echo "run KUBECONFIG=kubeconfigs/dev.kubeconfig kubectl get pods --all-namespaces"

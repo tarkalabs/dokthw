@@ -1,3 +1,4 @@
 certs/*.pem
 kubeconfigs/*
 .envrc
+*log

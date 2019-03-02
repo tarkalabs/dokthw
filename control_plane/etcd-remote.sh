@@ -1,9 +1,11 @@
 # this file runs on the server
 
+systemctl stop etcd
+systemctl disable etcd
 mkdir -p $HOME/components
 COMPONENTDIR=$HOME/components
-#rm -rf $COMPONENTDIR/etcd-download-test
-#rm $COMPONENTDIR/etcd*.tar.gz
+rm -rf $COMPONENTDIR/etcd-download-test
+rm $COMPONENTDIR/etcd*.tar.gz
 
 curl -L https://github.com/etcd-io/etcd/releases/download/v3.3.12/etcd-v3.3.12-linux-amd64.tar.gz -o $COMPONENTDIR/etcd-v3.3.12-linux-amd64.tar.gz
 mkdir -p $COMPONENTDIR/etcd-download-test
