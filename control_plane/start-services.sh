@@ -11,4 +11,7 @@ echo "Waiting for cluster to come up..."
 sleep 10
 
 kubectl get componentstatuses --kubeconfig /var/lib/kubernetes/admin.kubeconfig
+echo "Waiting for CRDs to register ..."
+sleep 10
 kubectl apply -f node_authorization.yaml
+kubectl apply -f bootstrap-token-secret.yaml

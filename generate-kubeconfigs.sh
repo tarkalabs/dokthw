@@ -30,6 +30,20 @@ function set_user_custom() {
     kubectl config use-context default --kubeconfig=kubeconfigs/${3}.kubeconfig
 }
 
+# usage: set_user username keyname config_name
+function set_user_token() {
+  kubectl config set-credentials bootstrap \
+    --token=$BOOTSTRAP_TOKEN_ID.$BOOTSTRAP_TOKEN_SECRET \
+    --kubeconfig=kubeconfigs/${1}.kubeconfig
+
+    kubectl config set-context default \
+      --cluster=dokthw \
+      --user=bootstrap \
+      --kubeconfig=kubeconfigs/${1}.kubeconfig
+
+    kubectl config use-context default --kubeconfig=kubeconfigs/${1}.kubeconfig
+}
+
 function set_user() {
   set_user_custom ${1} ${1} ${1}
 }
@@ -39,6 +53,11 @@ function node_certs() {
     set_cluster ${instance}
     set_user_custom system:node:${instance} ${instance} ${instance}
   done
+}
+
+function node_bootstrap_cert() {
+  set_cluster bootstrap
+  set_user_token bootstrap
 }
 
 function proxy_certs() {
@@ -66,7 +85,8 @@ function dev_access() {
   set_user_custom admin admin dev
 }
 
-node_certs
+#node_certs
+node_bootstrap_cert
 proxy_certs
 controller_manager_certs
 scheduler_certs

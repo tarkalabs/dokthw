@@ -36,8 +36,6 @@ apt-get install -y docker-ce docker-ce-cli containerd.io
 docker run hello-world
 
 cp ${HOSTNAME}-key.pem ${HOSTNAME}.pem /var/lib/kubelet/
-cp ${HOSTNAME}.kubeconfig /var/lib/kubelet/kubeconfig
+cp bootstrap.kubeconfig /var/lib/kubelet/bootstrap.kubeconfig
 cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
 cp ca.pem /var/lib/kubernetes
-
-

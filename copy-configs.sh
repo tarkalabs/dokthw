@@ -8,5 +8,5 @@ smartscp kubeconfigs/admin.kubeconfig \
   controller-01:.
 
 for instance in node-01 node-02; do
-  smartscp kubeconfigs/${instance}.kubeconfig kubeconfigs/kube-proxy.kubeconfig ${instance}:.
+  smartscp kubeconfigs/bootstrap.kubeconfig kubeconfigs/kube-proxy.kubeconfig ${instance}:.
 done

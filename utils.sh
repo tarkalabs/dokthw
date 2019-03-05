@@ -19,3 +19,8 @@ function run_remote() {
 
   cat $script | smartssh ${server} "bash -s"
 }
+
+# generates token of format [a-z0-9]{6}\.[a-z0-9]{16}
+function generate-token() {
+  cat /dev/urandom | LC_CTYPE=C tr -dc "a-z0-9" | head -c23 | sed s/././7
+}

@@ -8,6 +8,7 @@ ExecStart=/usr/local/bin/kubelet \
   --container-runtime=docker \
   --pod-cidr=10.244.0.0/16 \
   --image-pull-progress-deadline=2m \
+  --bootstrap-kubeconfig=/var/lib/kubelet/bootstrap.kubeconfig \
   --kubeconfig=/var/lib/kubelet/kubeconfig \
   --network-plugin=cni \
   --register-node=true \
