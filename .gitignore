@@ -1,4 +1,4 @@
-certs/*.pem
-kubeconfigs/*
+scripts/certs/*.pem
+scripts/kubeconfigs/*
 .envrc
 *log
